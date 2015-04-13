@@ -16,9 +16,11 @@ and run `bundle install`
 
 Currently, this gem lets you view, edit, create, and destroy users on HipChat.
 
-## Usage
+## Features for the Near Future
 
-`HipChat::Api` is a class that can be instantiated based on your authorization token. Multiple instances will help you easily manage more than one HipChat accounts in the same project.
+Providing more methods to interact with HipChat. The long-term plan is to cover all of the interactions possible with [HipChat API v2](https://www.hipchat.com/docs/apiv2).
+
+## Usage
 
 ```ruby
 @api = HipChat::Api.new(authorization_token)
@@ -39,7 +41,7 @@ attributes = {
   name: "Syed Humza Shah",
   password: some_password
 }
-user = @users.create(attributes) # or @users.create(attributes)
+user = @users.create!(attributes) # or @users.create(attributes)
 # ^ alternate: HipChat::User.create(token, attributes)
 
 # update users:
@@ -52,9 +54,3 @@ user.destroy! # or user.destroy
 # refresh users' list
 @api.refresh_users
 ```
-
-To keep things as easily manipulatable as possible, an attempt has been made to build relationships as those in `ActiveRecord`.
-
-## Features for the Near Future
-
-Providing more methods to interact with HipChat. The long-term plan is to cover all of the interactions possible with [HipChat API v2](https://www.hipchat.com/docs/apiv2).
