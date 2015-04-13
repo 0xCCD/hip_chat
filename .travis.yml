@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.2.0
+env: RAKE_ENV=test RAILS_ENV=test
+before_install:
+  - 'gem install bundler'
+script:
+  - 'bundle exec rspec'
+notifications:
+  email:
+    recipients:
+      - humzashah+travis@gmail.com
+    on_success: never
+    on_failure: always
