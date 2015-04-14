@@ -47,9 +47,9 @@ module HipChat
         new(token, attributes).tap(&:save!)
       end
 
-      def create(*args)
+      def create(token, attributes)
         begin
-          create!(*args)
+          create!(token, attributes)
         rescue Error
           false
         end

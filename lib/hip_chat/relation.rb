@@ -11,12 +11,14 @@ module HipChat
       end
     end
 
-    def find(hash)
-      method_missing("find", hash)
-    end
-
-    def method_missing(method_name, *args)
-      @list_class.send(method_name, @token, *args)
+    %w{
+      find
+      create
+      create!
+    }.each do |method_name|
+      define_method method_name do |*args|
+        @list_class.public_send(method_name, @token, *args)
+      end
     end
   end
 end
