@@ -1,12 +1,16 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'hip_chat'
 
-parent_folder = Pathname.new(__FILE__).parent.to_s
-Dir[File.join(parent_folder, "support", "helpers", "*.rb")].each { |path| require(path) }
+Dir[File.join("./spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
+  # include helpers:
+  config.include WebmockHelpers, {webmock: true}
+
+  # order tests:
+  config.order = "random"
+
+  # format output:
   config.color = true
   config.formatter = :documentation
-
-  config.include WebmockHelpers
 end
