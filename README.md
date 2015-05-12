@@ -2,6 +2,8 @@
 
 Easily control [HipChat](https://www.hipchat.com) with Ruby.
 
+[![Build Status](https://travis-ci.org/humzashah/hip_chat.svg?branch=master)](https://travis-ci.org/humzashah/hip_chat)
+
 ## Installation
 
 Add this line to your application's Gemfile:
