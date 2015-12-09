@@ -4,7 +4,7 @@ module HipChat
   class User
     include CommonMethods
 
-    URL = BASE_URL + "user"
+    URL = "#{BASE_URL}user"
 
     ATTRIBUTES = %w{
       client
@@ -108,8 +108,8 @@ module HipChat
     end
 
     def url
-      attr = id || email || "@#{mention_name}"
-      URL + "/" + attr.to_s
+      attribute = id || email || "@#{mention_name}"
+      "#{URL}/#{attribute}"
     end
 
     def set_properties(hash)
@@ -122,9 +122,11 @@ module HipChat
     end
 
     def hash_for_update
-      ATTRIBUTES.each_with_object({}) do |method, hash|
-        next unless value = public_send(method)
-        hash[method] = value
+      {}.tap do |hash|
+        ATTRIBUTES.each do |method|
+          value = public_send(method)
+          hash[method] = value if value
+        end
       end
     end
   end
