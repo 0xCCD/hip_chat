@@ -5,7 +5,7 @@ Dir[File.join("./spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   config.color = true
-  config.formatter = :documentation
+  config.formatter = :progress
   config.order = :random
 
   # include helpers:
