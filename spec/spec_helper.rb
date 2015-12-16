@@ -4,6 +4,10 @@ require 'hip_chat'
 Dir[File.join("./spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
+  config.color = true
+  config.formatter = :documentation
+  config.order = :random
+
   # include helpers:
   config.include WebmockHelpers, {webmock: true}
 end
